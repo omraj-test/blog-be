@@ -83,6 +83,8 @@ const updatePost = async (req, res) => {
         return;
     }
 
+    const {title, summary, content, thumbnail} = req.body;
+
     if (!title || !summary || !content) {
         res.status(400).end('title, summary and content can not be empty');
         return
@@ -102,7 +104,7 @@ const updatePost = async (req, res) => {
 
     try {
         const tokenInfo = jwt.verify(token, process.env.JWT_SECRET);
-        const {title, summary, content, thumbnail} = req.body;
+
         const {postId} = req.params;
 
         const postDoc = await Post.findById(postId);
