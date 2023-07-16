@@ -10,12 +10,9 @@ const postRoutes = require('./routes/PostRoutes');
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(
-    {
-        credentials: true,
-        origin: '*'
-    }
-));
+app.use(cors({
+    origin: ['https://blog-fe-bice.vercel.app']
+}));
 
 
 /**
